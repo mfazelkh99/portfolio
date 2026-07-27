@@ -1,3 +1,6 @@
+import Button from "@/components/ui/Button";
+import Image from "next/image";
+
 const skills = ["Python", "PHP", "React", "Next.js", "MySQL"]
 
 export default function Hero() {
@@ -8,38 +11,32 @@ export default function Hero() {
             <div className="max-w-2xl">
 
                 <p className="mb-4 text-lg text-gray-500">
-                    Hello, I'm
+                    Hi, I'm
                 </p>
 
                 <h1 className="mb-6 text-7xl font-bold leading-tight">
-                    Mohammad Fazel
-                    <br />
-                    Khorrami
+                    Fazel
                 </h1>
 
-                <h2 className="mb-8 text-3xl font-medium text-gray-700">
-                    Software Engineer &
-                    <br />
-                    Full-Stack Web Developer
+                <h2 className="mb-8 text-3xl font-medium text-gray-700 leading-12">
+                    Software Engineer focused on Automation,<br /> AI Agents & Modern Web Applications.
                 </h2>
 
-                <p className="mb-10 leading-8 text-gray-500">
-                    I design and develop modern web applications,
-                    automation systems, CRM platforms and intelligent bots
-                    focused on performance, scalability and user experience.
+                <p className="mb-10 leading-8 text-gray-500 w-8/10">
+                    I build intelligent systems that automate businesses,
+                    save time and solve real-world problems.
                 </p>
 
                 <div className="flex gap-5">
 
-                    <button className="rounded-xl bg-black px-7 py-4 font-medium text-white transition hover:bg-gray-800">
-                        Download Resume
-                    </button>
+                    <Button variant="secondary">
+                        Contact Me
+                    </Button>
 
-                    <button className="rounded-xl border border-gray-300 px-7 py-4 font-medium transition hover:bg-gray-100">
+                    <Button>
                         View Projects
-                    </button>
+                    </Button>
                 </div>
-                <div className="h-[1200px]" />
                 <div className="mt-14 flex flex-wrap gap-3">
 
                     {skills.map((item) => (
@@ -57,11 +54,15 @@ export default function Hero() {
 
             {/* Right Side */}
 
-            <div className="flex h-[500px] w-[450px] items-center justify-center rounded-3xl bg-gray-100">
+            <div className="flex h-[500px] w-[450px] items-center justify-center">
 
-                <span className="text-gray-400">
-                    Profile Image
-                </span>
+                <Image
+                    src="/images/profile.png"
+                    alt="Fazel"
+                    width={500}
+                    height={500}
+                    className="aspect-square w-full max-w-md rounded-full object-cover"
+                />
 
             </div>
 
