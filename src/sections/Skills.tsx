@@ -1,4 +1,5 @@
 import SkillCard from "@/components/ui/SkillCard";
+import Reveal from "@/components/animations/Reveal";
 
 import {
     Code2,
@@ -75,46 +76,50 @@ const skillCategories = [
 
 export default function Skills() {
     return (
-        <section
-            id="skills"
-            className="bg-gray-50 py-28"
+        <Reveal
+            direction="up"
         >
-            <div className="mx-auto max-w-7xl px-8">
+            <section
+                id="skills"
+                className="bg-gray-50 py-28"
+            >
+                <div className="mx-auto max-w-7xl px-8">
 
-                <div className="mb-16 text-center">
+                    <div className="mb-16 text-center">
 
-                    <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
-                        Skills
-                    </p>
+                        <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
+                            Skills
+                        </p>
 
-                    <h2 className="text-4xl font-bold">
-                        Technologies I Work With
-                    </h2>
+                        <h2 className="text-4xl font-bold">
+                            Technologies I Work With
+                        </h2>
 
-                    <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600">
-                        My main technologies and tools for building modern web
-                        applications, automation systems and AI-powered
-                        solutions.
-                    </p>
+                        <p className="mx-auto mt-5 max-w-2xl text-lg leading-8 text-gray-600">
+                            My main technologies and tools for building modern web
+                            applications, automation systems and AI-powered
+                            solutions.
+                        </p>
+
+                    </div>
+
+                    <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+
+                        {skillCategories.map((category) => (
+
+                            <SkillCard
+                                key={category.title}
+                                title={category.title}
+                                icon={category.icon}
+                                skills={category.skills}
+                            />
+
+                        ))}
+
+                    </div>
 
                 </div>
-
-                <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-
-                    {skillCategories.map((category) => (
-
-                        <SkillCard
-                            key={category.title}
-                            title={category.title}
-                            icon={category.icon}
-                            skills={category.skills}
-                        />
-
-                    ))}
-
-                </div>
-
-            </div>
-        </section>
+            </section>
+        </Reveal>
     );
 }

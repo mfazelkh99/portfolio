@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import Image from "next/image";
+import Reveal from "@/components/animations/Reveal";
 
 const skills = ["Python", "PHP", "React", "Next.js", "MySQL"]
 
@@ -8,7 +9,7 @@ export default function Hero() {
         <section className="mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl items-center justify-between px-8">
 
             {/* Left Side */}
-            <div className="max-w-2xl">
+            <Reveal direction="left" className="max-w-2xl">
 
                 <p className="mb-4 text-lg text-gray-500">
                     Hi, I'm
@@ -50,11 +51,11 @@ export default function Hero() {
 
                 </div>
 
-            </div>
+            </Reveal>
 
             {/* Right Side */}
 
-            <div className="flex h-[500px] w-[450px] items-center justify-center">
+            <Reveal direction="right" className="flex h-[500px] w-[450px] items-center justify-center">
 
                 <Image
                     src="/images/profile.png"
@@ -64,7 +65,7 @@ export default function Hero() {
                     className="aspect-square w-full max-w-md rounded-full object-cover"
                 />
 
-            </div>
+            </Reveal>
 
         </section>
     );
