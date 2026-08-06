@@ -1,34 +1,91 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useScroll, useMotionValueEvent, } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { useScroll, useMotionValueEvent, motion } from "framer-motion";
 import { getActiveProject } from "./utils"
 import ProjectCard from "./ProjectCard";
 import { projects } from "./Projects";
 
 export default function Projects() {
-    const sectionRef = useRef<HTMLElement | null>(null);
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start start", "end end"],
-    });
-    const [progress, setProgress] = useState(0);
-    const activeProject = getActiveProject(
-        progress,
-        projects.length
-    );
-    useMotionValueEvent(scrollYProgress, "change", (latest) => {
-        setProgress(latest);
-    });
+    // const sectionRef = useRef<HTMLElement | null>(null);
+    // const { scrollYProgress } = useScroll({
+    //     target: sectionRef,
+    //     offset: ["start start", "end end"],
+    // });
+    // const [progress, setProgress] = useState(0);
+    // const activeProject = getActiveProject(
+    //     progress,
+    //     projects.length
+    // );
+    // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    //     setProgress(latest);
+    // });
+
+    //new calculation for Active project
+    const projectRefs = useRef<(HTMLElement | null)[]>([]);
+    const [activeProject, setActiveProject] = useState(0);
+    useEffect(() => {
+
+        const handleScroll = () => {
+
+            const viewportCenter = window.innerHeight * 0.3;
+
+            let closestProject = 1;
+
+            let smallestDistance = Infinity;
+
+            projectRefs.current.forEach((project, index) => {
+
+                if (!project) return;
+
+                const rect = project.getBoundingClientRect();
+
+                const projectCenter =
+                    rect.top + rect.height / 2;
+
+                const distance = Math.abs(
+                    projectCenter - viewportCenter
+                );
+
+                if (distance < smallestDistance) {
+
+                    smallestDistance = distance;
+
+                    closestProject = index + 1;
+
+                }
+
+            });
+
+            setActiveProject(closestProject);
+
+        };
+
+        handleScroll();
+
+        window.addEventListener("scroll", handleScroll);
+
+        window.addEventListener("resize", handleScroll);
+
+        return () => {
+
+            window.removeEventListener("scroll", handleScroll);
+
+            window.removeEventListener("resize", handleScroll);
+
+        };
+
+    }, []);
+
     return (
         <section
-            ref={sectionRef}
             id="projects"
             className="bg-white py-28"
+
         >
             <div className="mx-auto max-w-7xl px-8">
 
-                <div className="mb-24 text-center">
+                <motion.div onViewportEnter={() => setActiveProject(0)} className="text-center">
 
                     <p className="mb-3 text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
                         Portfolio
@@ -44,20 +101,24 @@ export default function Projects() {
                         modern web development.
                     </p>
 
+                </motion.div>
+                <div>
+                    {projects.map((project, index) => (
+                        <div
+                            key={project.id}
+                            ref={(el) => {
+                                projectRefs.current[index] = el;
+                            }}
+                        >
+                            <ProjectCard
+                                project={project}
+                                reverse={index % 2 === 1}
+                                isActive={activeProject === project.id}
+                                // onActive={() => setActiveProject(project.id)}
+                            />
+                        </div>
+                    ))}
                 </div>
-
-                {projects.map((project, index) => (
-                    <ProjectCard
-                        key={project.title}
-                        project={project}
-                        reverse={index % 2 === 1}
-                        isActive={index === activeProject}
-                    />
-                ))}
-
-            </div>
-            <div className="fixed right-6 top-24 z-50 rounded-lg bg-black px-4 py-2 text-white">
-                Active: {activeProject + 1}
             </div>
         </section>
     );

@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, } from "framer-motion";
 import Button from "@/components/ui/Button";
 import {
@@ -20,12 +20,15 @@ interface ProjectCardProps {
     reverse?: boolean;
 
     isActive: boolean;
+
+    // onActive: () => void;
 }
 
 export default function ProjectCard({
     reverse = false,
     project,
     isActive,
+    // onActive,
 }: ProjectCardProps) {
     const ref = useRef<HTMLElement | null>(null);
 
@@ -77,6 +80,14 @@ export default function ProjectCard({
             "
         >
             <motion.article
+                // onViewportEnter={onActive}
+                viewport={{
+
+                    once: false,
+
+                    amount: 0.5,
+
+                }}
                 ref={ref}
                 animate={{
                     scale: activeScale,
@@ -84,12 +95,14 @@ export default function ProjectCard({
                 }}
                 transition={{
                     type: "spring",
-                    stiffness: 90,
-                    damping: 22,
+                    stiffness: 20,
+                    damping: 10,
                 }}
-                style={{
-                    backgroundColor: project.color,
-                }}
+                // style={{
+                //     backgroundColor: project.color,
+                // }}
+                // this shadow is for this className
+                // shadow-[0_30px_80px_rgba(0,0,0,0.08)]
                 className={`
                     sticky
                     top-24
@@ -103,8 +116,6 @@ export default function ProjectCard({
 
                     px-12
                     py-12
-
-                    shadow-[0_30px_80px_rgba(0,0,0,0.08)]
 
                     border
                     border-white/60

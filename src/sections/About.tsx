@@ -5,12 +5,13 @@ export default function About() {
     return (
         <Reveal
             direction="up"
+            className="max-w-7xl mx-auto"
         >
 
 
             <section
                 id="about"
-                className="mx-auto flex max-w-7xl flex-col gap-8 px-8 py-28"
+                className="flex flex-col gap-8 px-8 py-28"
             >
                 <span className="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
                     About Me

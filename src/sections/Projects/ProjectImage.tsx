@@ -48,7 +48,7 @@ export default function ProjectImage({
                 className="
                     rounded-[32px]
                     bg-white
-                    p-5
+                    
 
                     shadow-[0_35px_80px_rgba(0,0,0,.12)]
 
@@ -58,7 +58,7 @@ export default function ProjectImage({
                     overflow-hidden
                 "
             >
-                <div
+                {/* <div
                     className="
                         flex
                         items-center
@@ -69,7 +69,7 @@ export default function ProjectImage({
                     <span className="h-3 w-3 rounded-full bg-red-400" />
                     <span className="h-3 w-3 rounded-full bg-yellow-400" />
                     <span className="h-3 w-3 rounded-full bg-green-400" />
-                </div>
+                </div> */}
                 <Image
                     src={image}
                     alt={title}
@@ -94,6 +94,7 @@ export default function ProjectImage({
                     transition-opacity
                     duration-500
                     group-hover:opacity-100
+                    rounded-[32px]
                 "
             />
         </motion.div>

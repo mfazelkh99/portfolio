@@ -1,4 +1,4 @@
-import { motion, MotionValue } from "framer-motion";
+import { delay, motion, MotionValue } from "framer-motion";
 import {
     fadeLeft,
     fadeRight,
@@ -7,17 +7,7 @@ import {
 } from "@/lib/motion";
 import type { Project } from "./types";
 import Button from "@/components/ui/Button";
-
-const container = {
-    hidden: {},
-
-    visible: {
-        transition: {
-            staggerChildren: 0.12,
-            delayChildren: 0.15,
-        },
-    },
-};
+import { useState } from "react";
 
 interface ProjectContentProps {
     project: Project;
@@ -34,8 +24,11 @@ export default function ProjectContent({
     x,
     reverse,
 }: ProjectContentProps) {
+    const [isContentVisible, setIsContentVisible] = useState(false);
     return (
         <motion.div
+            onViewportEnter={() => setIsContentVisible(true)}
+            onViewportLeave={() => setIsContentVisible(false)}
             initial={{
                 x: reverse ? 120 : -120,
                 opacity: 0,
@@ -49,36 +42,38 @@ export default function ProjectContent({
                 amount: 0.6,
                 once: false,
             }}
-            variants={container}
-            animate={isActive ? "visible" : "hidden"}
+            // variants={staggerContainer}
+            animate={isContentVisible ? "visible" : "hidden"}
         >
 
             <motion.h3 className="text-sm font-semibold uppercase tracking-[0.25em] text-sky-600 mb-4"
-                variants={fadeUp}>
+            // variants={fadeRight}
+            >
                 {project.subtitle}
             </motion.h3>
 
             <motion.h2 className=" text-5xl font-black leading-tight tracking-tight text-zinc-900 mb-6"
-                variants={fadeUp}>
+            // variants={fadeRight}
+            >
                 {project.title}
             </motion.h2>
 
-            <motion.p className="max-w-xl text-lg leading-8 text-zinc-600 mb-1" variants={fadeUp}>
+            <motion.p className="max-w-xl text-lg leading-8 text-zinc-600 mb-1"
+            // variants={fadeRight}
+            >
                 {project.description}
             </motion.p>
 
             {/* Features */}
 
-            <motion.ul variants={staggerContainer} transition={{ duration: 1, }} initial="hidden" whileInView="visible"
+            <motion.ul variants={staggerContainer}
                 className="mb-8 space-y-4 my-10">
 
                 {project.features.map((feature, index) => (
                     <motion.li
                         key={feature.title}
                         variants={fadeRight}
-                        transition={{
-                            delay: index * 0.08,
-                        }}
+                        // animate={isActive ? "visible" : "hidden"}
                         className="flex items-center gap-3 text-zinc-700"
                     >
                         <span className="text-emerald-500"> ✓ </span>{feature.title}
@@ -90,17 +85,14 @@ export default function ProjectContent({
             {/* Tech Stack */}
 
             <motion.div
-                variants={fadeUp}
-                className="flex flex-wrap gap-3"
+
+                className="flex flex-wrap gap-3 mb-8"
             >
 
                 {project.technologies.map((tech, index) => (
                     <motion.span
                         key={tech.name}
-                        variants={fadeRight}
-                        transition={{
-                            delay: index * 0.08,
-                        }}
+                        // variants={fadeRight}
                         className="rounded-full bg-white/70 border border-zinc-200 px-4 py-2 text-sm font-medium shadow-sm backdrop-blur"
                     >
                         {tech.name}
@@ -112,8 +104,9 @@ export default function ProjectContent({
             {/* Buttons */}
 
             <motion.div
-                variants={fadeUp}
+
                 className="flex gap-4"
+            // variants={fadeRight}
             >
 
                 {project.github && (

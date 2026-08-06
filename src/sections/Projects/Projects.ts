@@ -25,10 +25,10 @@ export const projects: Project[] = [
             { title: "Customer Dashboard" },
             { title: "Admin Panel" },
             { title: "Excel Export" },
-            { title: "Authentication" },
+            { title: "Add Notes" },
         ],
 
-        github: "https://github.com/yourusername/irancell-crm",
+        github: "https://github.com/mfazelkh99/irancell-crm",
 
         live: "",
 
@@ -65,7 +65,7 @@ export const projects: Project[] = [
             { title: "API Integration" },
         ],
 
-        github: "",
+        github: "https://github.com/mfazelkh99/irancell-eitaa-miniapp",
 
         live: "",
 
@@ -102,7 +102,7 @@ export const projects: Project[] = [
             { title: "Admin Panel" },
         ],
 
-        github: "",
+        github: "https://github.com/mfazelkh99/zarfund-bale-bot",
 
         live: "",
 
@@ -139,9 +139,9 @@ export const projects: Project[] = [
             { title: "SEO Friendly" },
         ],
 
-        github: "",
+        github: "https://github.com/mfazelkh99/portfolio",
 
-        live: "",
+        live: "http://localhost:3000/",
 
         year: "2026",
 
