@@ -11,12 +11,15 @@ export const projects: Project[] = [
         description:
             "A complete CRM platform for managing customers, requests, and sales workflows.",
 
-        image: "/images/projects/irancell-crm.png",
+        media: {
+            type: "image",
+            src: "/images/projects/irancell-crm.png",
+        },
 
         technologies: [
-            { name: "Next.js", icon: "nextjs" },
-            { name: "TypeScript", icon: "typescript" },
-            { name: "Tailwind CSS", icon: "tailwind" },
+            { name: "HTML", icon: "html" },
+            { name: "CSS", icon: "css" },
+            { name: "JavaScript", icon: "javascript" },
             { name: "PHP", icon: "php" },
             { name: "MySQL", icon: "mysql" },
         ],
@@ -49,13 +52,17 @@ export const projects: Project[] = [
         description:
             "A Mini App for customer registration and number reservation integrated with CRM.",
 
-        image: "/images/projects/miniapp.png",
+        media: {
+            type: "image",
+            src: "/images/projects/miniapp.jpg",
+        },
 
         technologies: [
-            { name: "Next.js", icon: "nextjs" },
-            { name: "TypeScript", icon: "typescript" },
-            { name: "Tailwind CSS", icon: "tailwind" },
+            { name: "Eitaa API", icon: "eitaa" },
+            { name: "HTML", icon: "hyml" },
+            { name: "CSS", icon: "css" },
             { name: "PHP", icon: "php" },
+            { name: "MySQL", icon: "mysql" },
         ],
 
         features: [
@@ -67,7 +74,7 @@ export const projects: Project[] = [
 
         github: "https://github.com/mfazelkh99/irancell-eitaa-miniapp",
 
-        live: "",
+        live: "https://eitaa.com/yazdirancell_app",
 
         year: "2026",
 
@@ -86,7 +93,10 @@ export const projects: Project[] = [
         description:
             "Telegram & Bale automation bot for customer management and financing requests.",
 
-        image: "/images/projects/zarfund-bot.png",
+        media: {
+            type: "video",
+            src: "/videos/zarfund-bot.mp4",
+        },
 
         technologies: [
             { name: "Python", icon: "python" },
@@ -97,14 +107,14 @@ export const projects: Project[] = [
 
         features: [
             { title: "Automation" },
-            { title: "Reports" },
-            { title: "JSON Export" },
+            { title: "Auto Reports" },
+            { title: "Bulk Messaging" },
             { title: "Admin Panel" },
         ],
 
         github: "https://github.com/mfazelkh99/zarfund-bale-bot",
 
-        live: "",
+        live: "https://ble.ir/zarfundbot",
 
         year: "2026",
 
@@ -121,27 +131,31 @@ export const projects: Project[] = [
         subtitle: "Personal Website",
 
         description:
-            "Modern animated portfolio built with Next.js, Framer Motion and Tailwind CSS.",
+            "Modern animated portfolio built with Next.js, React, Tailwind CSS and node.js.",
 
-        image: "/images/projects/portfolio.png",
+        media: {
+            type: "image",
+            src: "/images/projects/portfolio.png",
+        },
 
         technologies: [
             { name: "Next.js", icon: "nextjs" },
+            { name: "React", icon: "react" },
             { name: "TypeScript", icon: "typescript" },
-            { name: "Framer Motion", icon: "framer" },
+            { name: "Node.js", icon: "nodejs" },
             { name: "Tailwind CSS", icon: "tailwind" },
         ],
 
         features: [
-            { title: "Dark Mode" },
+            { title: "Online Chat" },
             { title: "Animations" },
             { title: "Responsive" },
-            { title: "SEO Friendly" },
+            { title: "Language Switcher" },
         ],
 
         github: "https://github.com/mfazelkh99/portfolio",
 
-        live: "http://localhost:3000/",
+        live: "#portfolio",
 
         year: "2026",
 

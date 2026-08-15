@@ -122,7 +122,7 @@ export default function Contact() {
         >
             <section
                 id="contact"
-                className="bg-white pb-18 pt-2"
+                className="scroll-mt-24 bg-white pb-18 pt-2"
             >
                 <div className="mx-auto max-w-7xl px-8">
 

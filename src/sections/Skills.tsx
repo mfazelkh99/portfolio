@@ -81,7 +81,7 @@ export default function Skills() {
         >
             <section
                 id="skills"
-                className="bg-gray-50 py-28"
+                className="scroll-mt-24 bg-gray-50 py-28"
             >
                 <div className="mx-auto max-w-7xl px-8">
 

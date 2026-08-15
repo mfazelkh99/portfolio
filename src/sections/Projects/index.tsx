@@ -80,7 +80,7 @@ export default function Projects() {
     return (
         <section
             id="projects"
-            className="bg-white py-18"
+            className="scroll-mt-24 bg-white py-18"
 
         >
             <div className="mx-auto max-w-7xl px-8">

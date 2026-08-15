@@ -8,12 +8,12 @@ export const navItems = [
         href: "#about",
     },
     {
-        label: "Projects",
-        href: "#projects",
-    },
-    {
         label: "Skills",
         href: "#skills",
+    },
+    {
+        label: "Projects",
+        href: "#projects",
     },
     {
         label: "Contact",

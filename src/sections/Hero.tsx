@@ -6,7 +6,7 @@ const skills = ["Python", "PHP", "React", "Next.js", "MySQL"]
 
 export default function Hero() {
     return (
-        <section className="mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl items-center justify-between px-8">
+        <section className="scroll-mt-24 mx-auto flex min-h-[calc(100vh-80px)] max-w-7xl items-center justify-between px-8">
 
             {/* Left Side */}
             <Reveal direction="left" className="max-w-2xl">
@@ -31,11 +31,11 @@ export default function Hero() {
                 <div className="flex gap-5">
 
                     <Button variant="secondary">
-                        Contact Me
+                        <a href="#contact">Contact Me</a>
                     </Button>
 
                     <Button>
-                        View Projects
+                        <a href="#projects">View Projects</a>
                     </Button>
                 </div>
                 <div className="mt-14 flex flex-wrap gap-3">

@@ -42,6 +42,11 @@ export default function ProjectContent({
                 amount: 0.6,
                 once: false,
             }}
+            transition={{
+                type: "spring",
+                stiffness: 50,
+                damping: 20,
+            }}
             // variants={staggerContainer}
             animate={isContentVisible ? "visible" : "hidden"}
         >
@@ -110,7 +115,7 @@ export default function ProjectContent({
             >
 
                 {project.github && (
-                    <Button href={project.github}>
+                    <Button href={project.github} target="_blank">
                         GitHub
                     </Button>
                 )}
@@ -119,6 +124,7 @@ export default function ProjectContent({
                     <Button
                         href={project.live}
                         variant="secondary"
+                        target="_blank"
                     >
                         Live Demo
                     </Button>

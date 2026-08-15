@@ -11,7 +11,7 @@ export default function About() {
 
             <section
                 id="about"
-                className="flex flex-col gap-8 px-8 py-28"
+                className="scroll-mt-24 flex flex-col gap-8 px-8 py-28"
             >
                 <span className="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500">
                     About Me
@@ -34,11 +34,15 @@ export default function About() {
 
                 <div className="flex gap-4">
                     <Button>
-                        Download Resume
+                        <a href="/resume.pdf" download="Mohammad-Fazel-Khorrami-Resume.pdf">
+                            Download Resume
+                        </a>
                     </Button>
 
                     <Button variant="secondary">
-                        Contact Me
+                        <a href="https://github.com/mfazelkh99" target="_blank" rel="noopener noreferrer">
+                            View Github
+                        </a>
                     </Button>
                 </div>
             </section>

@@ -2,21 +2,24 @@ import Image from "next/image";
 import { motion, MotionValue } from "framer-motion";
 
 interface ProjectImageProps {
-    image: string;
     title: string;
     scale: MotionValue<number>;
     y: MotionValue<number>;
     x: MotionValue<number>;
     reverse: boolean;
+    media: {
+        type: "image" | "video";
+        src: string;
+    };
 }
 
 export default function ProjectImage({
-    image,
     title,
     scale,
     y,
     x,
     reverse,
+    media,
 }: ProjectImageProps) {
     return (
         <motion.div
@@ -36,9 +39,16 @@ export default function ProjectImage({
                 amount: 0.6,
                 once: false,
             }}
+
+            transition={{
+                type: "spring",
+                stiffness: 20,
+                damping: 10,
+            }}
+
             className="
                 relative
-                w-full
+                w-fit
                 max-w-2xl
                 mx-auto
                 group
@@ -70,18 +80,39 @@ export default function ProjectImage({
                     <span className="h-3 w-3 rounded-full bg-yellow-400" />
                     <span className="h-3 w-3 rounded-full bg-green-400" />
                 </div> */}
-                <Image
-                    src={image}
-                    alt={title}
-                    width={900}
-                    height={600}
-                    className="
+                {media.type === "video" ? (
+                    <video
+                        src={media.src}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="
+                            block
+                            h-auto
+                            w-auto
+                            max-w-full
+                            max-h-[500px]
+                            rounded-2xl
+                            object-contain
+                            transition-all
+                            duration-500
+                        "
+                    />
+                ) : (
+                    <Image
+                        src={media.src}
+                        alt={title}
+                        width={900}
+                        height={600}
+                        className="
                         rounded-2xl
                         object-cover
                         transition-all
                         duration-500
                     "
-                />
+                    />
+                )}
             </div>
             <div
                 className="

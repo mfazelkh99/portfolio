@@ -20,7 +20,10 @@ export interface Project {
 
     description: string;
 
-    image: string;
+    media: {
+        type: "image" | "video";
+        src: string;
+    };
 
     technologies: Technology[];
 

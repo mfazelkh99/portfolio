@@ -85,18 +85,26 @@ export default function ProjectCard({
 
                     once: false,
 
-                    amount: 0.5,
+                    amount: 0.6,
 
                 }}
-                ref={ref}
-                animate={{
-                    scale: activeScale,
-                    opacity: activeOpacity,
+                initial={{
+                    scale: 0.94,
+                    opacity: 0.45,
                 }}
+                whileInView={{
+                    scale: 1,
+                    opacity: 1,
+                }}
+                ref={ref}
+                // animate={{
+                //     scale: activeScale,
+                //     opacity: activeOpacity,
+                // }}
                 transition={{
                     type: "spring",
-                    stiffness: 20,
-                    damping: 10,
+                    stiffness: 50,
+                    damping: 20,
                 }}
                 // style={{
                 //     backgroundColor: project.color,
@@ -135,7 +143,7 @@ export default function ProjectCard({
                 />
 
                 <ProjectImage
-                    image={project.image}
+                    media={project.media}
                     title={project.title}
                     scale={scale}
                     y={y}
