@@ -12,21 +12,25 @@ export function authenticate(
     next: NextFunction
 ) {
     try {
-        const authHeader = req.headers.authorization;
+        // ۱. ابتدا بررسی می‌کنیم که آیا توکن در کوکی وجود دارد (برای بازدیدکنندگان)
+        let token;
 
-        if (!authHeader) {
+        // ۱. اولویت با هدر Authorization است (که از Local Storage می‌آید)
+        const authHeader = req.headers.authorization;
+        if (authHeader && authHeader.startsWith("Bearer ")) {
+            token = authHeader.split(" ")[1];
+        }
+
+        // ۲. اگر توکنی در هدر نبود، به سراغ کوکی مرورگر می‌رویم (برای ویزیتورها)
+        if (!token) {
+            token = req.cookies?.chat_token;
+        }
+
+        // اگر توکن در هیچ‌کدام پیدا نشد
+        if (!token) {
             return res.status(401).json({
                 success: false,
                 message: "Authentication required.",
-            });
-        }
-
-        const [scheme, token] = authHeader.split(" ");
-
-        if (scheme !== "Bearer" || !token) {
-            return res.status(401).json({
-                success: false,
-                message: "Invalid authorization format.",
             });
         }
 
