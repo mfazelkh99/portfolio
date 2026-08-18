@@ -13,6 +13,7 @@ import Reveal from "@/components/animations/Reveal";
 import type { Project } from "./types";
 import ProjectImage from "./ProjectImage";
 import ProjectContent from "./ProjectContent";
+import { useLanguage } from "@/context/LanguageContext"; 
 
 interface ProjectCardProps {
     project: Project;
@@ -31,7 +32,7 @@ export default function ProjectCard({
     // onActive,
 }: ProjectCardProps) {
     const ref = useRef<HTMLElement | null>(null);
-
+    const { isFa } = useLanguage();
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start end", "end start"],
@@ -81,11 +82,12 @@ export default function ProjectCard({
         >
             <motion.article
                 // onViewportEnter={onActive}
+                key={isFa ? 'fa' : 'en'}
                 viewport={{
 
                     once: false,
 
-                    amount: 0.6,
+                    amount: 0.5,
 
                 }}
                 initial={{

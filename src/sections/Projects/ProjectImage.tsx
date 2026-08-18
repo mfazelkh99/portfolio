@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { motion, MotionValue } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext"; // 👈 ایمپورت اضافه شود
 
 interface ProjectImageProps {
     title: string;
@@ -21,10 +22,16 @@ export default function ProjectImage({
     reverse,
     media,
 }: ProjectImageProps) {
+
+    const { isFa } = useLanguage(); // 👈 دریافت وضعیت زبان
+    // 👈 برعکس کردن نقطه شروع انیمیشن عکس
+    const baseInitialX = reverse ? -120 : 120;
+    const finalInitialX = isFa ? -baseInitialX : baseInitialX;
+
     return (
         <motion.div
             initial={{
-                x: reverse ? -120 : 120,
+                x: finalInitialX,
                 opacity: 0,
                 scale: 0.92,
             }}
@@ -36,7 +43,7 @@ export default function ProjectImage({
             }}
 
             viewport={{
-                amount: 0.6,
+                amount: 0.5,
                 once: false,
             }}
 

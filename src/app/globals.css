@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+/* وقتی زبان فارسی (راست‌چین) می‌شود، کل سایت این فونت را می‌گیرد */
+/* وقتی زبان فارسی (راست‌چین) می‌شود، کل سایت این فونت را می‌گیرد */
+html[dir="rtl"],
+html[dir="rtl"] body {
+  font-family: 'Vazirmatn', sans-serif !important;
+}
 @import "tailwindcss";
 
 :root {
